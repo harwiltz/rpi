@@ -1,0 +1,12 @@
+export BaseRiskSensitiveLearner
+
+mutable struct BaseRiskSensitiveLearner{A, B} <: AbstractLearner
+    approximator::A
+    γ::Float64
+    b::B
+end
+
+function BaseRiskSensitiveLearner(approximator; γ = 0.99, B = Float32, b = 0)
+    BaseRiskSensitiveLearner(approximator,
+                             γ,
+                             zero(B))
